@@ -32,7 +32,6 @@ public class VentanaMain extends JFrame implements ActionListener{
 	private JMenuItem mniCrearVenta, mniListadoVentas,mniListadoFechas;
 	private JMenuItem mniAltaPro, mniListadoPro;
 	private JRadioButtonMenuItem mniTiendaCutre,mniTiendaUniversidad;
-	sdfsdfd
 	private JPanel contenedorPrincipal;
 	
 	private PanelVerImagen pantallaVerImagen;
