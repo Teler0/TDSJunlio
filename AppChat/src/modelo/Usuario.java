@@ -73,7 +73,9 @@ public class Usuario implements Descuento {
 		this.email = email;
 	}
 	
-	
+	public int getId() {
+		return this.id;
+	}
 	
 }	
 	

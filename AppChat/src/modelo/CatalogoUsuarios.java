@@ -45,21 +45,23 @@ public class CatalogoUsuarios {
 		}
 		return null;
 	}
-	public Usuario getUsuario(String ) {
-		return clientes.get(dni); 
+	
+	public Usuario getUsuario(String numero) {
+		return usuarios.get(numero); 
 	}
 	
-	public void addCliente(Cliente cli) {
-		clientes.put(cli.getDni(),cli);
+	public void addUsuario(Usuario u) {
+		usuarios.put(u.getNumero(), u);
 	}
-	public void removeCliente (Cliente cli) {
-		clientes.remove(cli.getDni());
-	}*/
 	
-	/*Recupera todos los clientes para trabajar con ellos en memoria
+	public void removeUsuario (Usuario u) {
+		usuarios.remove(u.getNumero());
+	}
+	
+	//Recupera todos los usuarios para trabajar con ellos en memoria
 	private void cargarCatalogo() throws DAOException {
-		 List<Cliente> clientesBD = adaptadorCliente.recuperarTodosClientes();
-		 for (Cliente cli: clientesBD) 
-			     clientes.put(cli.getDni(),cli);
-	}*/
+		 List<Usuario> usuariosBD = adaptadorUsuario.recuperarTodosUsuarios(); //Aqui he cambiado el adaptador y el metodo
+		 for (Usuario u: usuariosBD) 
+			     usuarios.put(u.getNumero(),u);
+	}
 }

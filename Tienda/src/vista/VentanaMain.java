@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 import controlador.ControladorTienda;
 import modelo.CatalogoClientes;
 import modelo.CatalogoVentas;
-import modelo.Cliente;
+import modelo.Usuario;
 import modelo.LineaVenta;
 import modelo.Producto;
 import modelo.Venta;
@@ -197,10 +197,10 @@ public class VentanaMain extends JFrame implements ActionListener{
   	}
 	
 	public void listadoClientes(JTextArea listado) {
-  		List<Cliente> listaClientes = CatalogoClientes.getUnicaInstancia().getClientes();
+  		List<Usuario> listaClientes = CatalogoClientes.getUnicaInstancia().getClientes();
   		listado.setText("dni        Nombre                         N.ventas\n");
   		listado.append("---------- ------------------------------ --------\n");
-  		for (Cliente c: listaClientes) {
+  		for (Usuario c: listaClientes) {
   			String dni=String.format("%1$-10s",c.getDni());
   			String nombre=String.format("%1$-30s",c.getNombre());
   			String numVentas=String.format("%1$-8s",String.valueOf(c.getVentas().size()));
