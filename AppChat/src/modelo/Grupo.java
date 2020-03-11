@@ -7,11 +7,10 @@ import java.util.List;
 public class Grupo extends Contacto {
 		
 	private List<ContactoIndividual> contactos;
-		
+		/**/
 	private Usuario administrador;
-	//private String nombreGrupo;
+
 	
-	//Falta implementar constructor
 	public Grupo(String nombreGrupo) {
 		super(nombreGrupo);
 		this.contactos = new LinkedList<ContactoIndividual>();

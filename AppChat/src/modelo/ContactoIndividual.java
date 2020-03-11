@@ -8,7 +8,7 @@ public class ContactoIndividual extends Contacto {
 		super(nombre);
 		this.telefono = telefono;
 	}
-	
+	/**/
 	
 	public String getTelefono() {
 		return this.telefono;

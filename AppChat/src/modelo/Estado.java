@@ -4,7 +4,7 @@ public class Estado {
 
 	private String mensaje;
 	private String imagen;
-	
+	/**/
 	public Estado(String mensaje, String imagen) {
 		this.mensaje = mensaje;
 		this.imagen = imagen;

@@ -11,7 +11,7 @@ public class Contacto {
 	private String imagen;
 	private List<Mensaje> mensajes;
 	
-	
+	/**/
 	public Contacto(String nombre) {
 		this.nombre = nombre;
 		this.codigo = 0;
