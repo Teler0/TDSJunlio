@@ -72,7 +72,7 @@ public class Usuario implements Descuento {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+}
 	
 	
 	
