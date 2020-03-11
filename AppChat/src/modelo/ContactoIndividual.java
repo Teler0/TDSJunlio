@@ -2,7 +2,15 @@ package modelo;
 
 public class ContactoIndividual extends Contacto {
 
-	public ContactoIndividual(String nombre) {
+	private String telefono;
+	
+	public ContactoIndividual(String nombre, String telefono) {
 		super(nombre);
+		this.telefono = telefono;
+	}
+	
+	
+	public String getTelefono() {
+		return this.telefono;
 	}
 }
