@@ -11,11 +11,14 @@ public class Usuario implements Descuento {
 	String password;
 	boolean isPremiun;
 	String imagen;
-	Date fechadenacimiento;
+	Date fechaDeNacimiento;
 	String saludo;
 	String email;
 	int id;
 	List<Contacto> listaDeContactos;
+	Date fechaRegistro;
+	
+	private Usuario(String alias, String nombre, Date fechaDeNacimiento,String numero, String password, String email, String saludo,)
 	
 	
 	public String getNombre() {
@@ -72,9 +75,12 @@ public class Usuario implements Descuento {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-}
+
 	
+	public int getId() {
+		return this.id;
+	}
 	
-	
+}	
 	
 
