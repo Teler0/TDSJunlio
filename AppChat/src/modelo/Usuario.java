@@ -89,10 +89,21 @@ public class Usuario implements Descuento {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-
 	
 	public int getId() {
 		return this.id;
+	}
+	
+	public void añadirContacto(Contacto contacto) {
+		
+		listaDeContactos.add(contacto);
+		
+	}
+	
+	public void eliminarContacto(Contacto contacto) {
+		
+		listaDeContactos.remove(contacto);
+		
 	}
 	
 }	
