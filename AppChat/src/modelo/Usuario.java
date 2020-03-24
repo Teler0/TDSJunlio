@@ -2,8 +2,9 @@ package modelo;
 
 import java.util.Date;
 import java.util.List;
+import java.util.LinkedList;
 
-public class Usuario implements Descuento {
+public class Usuario implements Descuento {//IMplementar getDescuento(){}
 
 	String alias; //Nombre del usuario en AppChat
 	String nombre; //Nombre real del usuario
@@ -11,11 +12,27 @@ public class Usuario implements Descuento {
 	String password;
 	boolean isPremiun;
 	String imagen;
-	Date fechadenacimiento;
+	Date fechaDeNacimiento;
 	String saludo;
 	String email;
 	int id;
 	List<Contacto> listaDeContactos;
+	Date fechaRegistro;
+	
+	private Usuario(String alias, String nombre, Date fechaDeNacimiento, String numero, String password, String email, String saludo) {
+		this.alias = alias;
+		this.nombre = nombre;
+		this.fechaDeNacimiento = fechaDeNacimiento;
+		this.numero = numero;
+		this.password = password;
+		this.email = email;
+		if(saludo==null){
+			this.saludo = "Hola, buenos dias";
+		}else { this.saludo = saludo;}
+		this.imagen = "imagenpordefecto";
+		this.isPremiun = false;
+		this.listaDeContactos = new LinkedList<Contacto>();
+	}
 	
 	
 	public String getNombre() {
@@ -49,10 +66,10 @@ public class Usuario implements Descuento {
 		this.imagen = imagen;
 	}
 	public Date getFechadenacimiento() {
-		return fechadenacimiento;
+		return fechaDeNacimiento;
 	}
 	public void setFechadenacimiento(Date fechadenacimiento) {
-		this.fechadenacimiento = fechadenacimiento;
+		this.fechaDeNacimiento = fechadenacimiento;
 	}
 	public String getAlias() {
 		return alias;
@@ -75,6 +92,25 @@ public class Usuario implements Descuento {
 	
 	public int getId() {
 		return this.id;
+	}
+	
+	public void añadirContacto(Contacto contacto) {
+		
+		listaDeContactos.add(contacto);
+		
+	}
+	
+	public void eliminarContacto(Contacto contacto) {
+		
+		listaDeContactos.remove(contacto);
+		
+	}
+
+
+	@Override
+	public int getDescuento() {
+		// TODO Apéndice de método generado automáticamente
+		return 0;
 	}
 	
 }	

@@ -11,28 +11,20 @@ public class Contacto {
 	private String imagen;
 	private List<Mensaje> mensajes;
 	
-	/**/
+
 	public Contacto(String nombre) {
 		this.nombre = nombre;
 		this.codigo = 0;
 		this.imagen = null;
 		this.mensajes = new LinkedList<Mensaje>();
+		this.imagen = "default_image.png";
 	}
-
-	
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
 
 	public void setCodigo(int codigo) {
 		this.codigo = codigo;
 	}
 
 
-	public void setImagen(String imagen) {
-		this.imagen = imagen;
-	}
 
 
 	public String getNombre() {
@@ -45,13 +37,17 @@ public class Contacto {
 	}
 
 
+	public List<Mensaje> getMensajes() {
+		return Collections.unmodifiableList(this.mensajes);
+	}
+
 	public String getImagen() {
 		return imagen;
 	}
 
 
-	public List<Mensaje> getMensajes() {
-		return Collections.unmodifiableList(this.mensajes);
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
-	
+
 }
