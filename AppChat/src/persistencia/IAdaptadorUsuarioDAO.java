@@ -10,4 +10,5 @@ public interface IAdaptadorUsuarioDAO {
 	public void modificarUsuario(Usuario cliente);
 	public Usuario recuperarUsuario(int codigo);
 	public List<Usuario> recuperarTodosUsuarios();
+	
 }
