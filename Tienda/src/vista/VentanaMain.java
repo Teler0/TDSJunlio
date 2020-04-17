@@ -40,7 +40,7 @@ public class VentanaMain extends JFrame implements ActionListener{
 	private PanelCrearVenta pantallaCrearVenta;
 	
 	public VentanaMain(){
-		setSize(Constantes.ventana_x_size,Constantes.ventana_y_size);
+		setSize(184,242);
 		setTitle("Aplicacion TIENDA");
 		contenedorPrincipal= (JPanel) this.getContentPane();
 		configurarMenu();
