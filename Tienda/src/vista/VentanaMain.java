@@ -18,7 +18,7 @@ import javax.swing.JTextArea;
 import controlador.ControladorTienda;
 import modelo.CatalogoClientes;
 import modelo.CatalogoVentas;
-import modelo.Usuario;
+import modelo.Cliente;
 import modelo.LineaVenta;
 import modelo.Producto;
 import modelo.Venta;
@@ -32,6 +32,7 @@ public class VentanaMain extends JFrame implements ActionListener{
 	private JMenuItem mniCrearVenta, mniListadoVentas,mniListadoFechas;
 	private JMenuItem mniAltaPro, mniListadoPro;
 	private JRadioButtonMenuItem mniTiendaCutre,mniTiendaUniversidad;
+	
 	private JPanel contenedorPrincipal;
 	
 	private PanelVerImagen pantallaVerImagen;
@@ -40,7 +41,7 @@ public class VentanaMain extends JFrame implements ActionListener{
 	private PanelCrearVenta pantallaCrearVenta;
 	
 	public VentanaMain(){
-		setSize(184,242);
+		setSize(Constantes.ventana_x_size,Constantes.ventana_y_size);
 		setTitle("Aplicacion TIENDA");
 		contenedorPrincipal= (JPanel) this.getContentPane();
 		configurarMenu();
@@ -197,10 +198,10 @@ public class VentanaMain extends JFrame implements ActionListener{
   	}
 	
 	public void listadoClientes(JTextArea listado) {
-  		List<Usuario> listaClientes = CatalogoClientes.getUnicaInstancia().getClientes();
+  		List<Cliente> listaClientes = CatalogoClientes.getUnicaInstancia().getClientes();
   		listado.setText("dni        Nombre                         N.ventas\n");
   		listado.append("---------- ------------------------------ --------\n");
-  		for (Usuario c: listaClientes) {
+  		for (Cliente c: listaClientes) {
   			String dni=String.format("%1$-10s",c.getDni());
   			String nombre=String.format("%1$-30s",c.getNombre());
   			String numVentas=String.format("%1$-8s",String.valueOf(c.getVentas().size()));

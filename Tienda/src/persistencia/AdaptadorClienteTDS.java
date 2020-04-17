@@ -11,7 +11,7 @@ import tds.driver.ServicioPersistencia;
 import beans.Entidad;
 import beans.Propiedad;
 
-import modelo.Usuario;
+import modelo.Cliente;
 import modelo.Venta;
 
 //Usa un pool para evitar problemas doble referencia con ventas
@@ -31,7 +31,7 @@ public class AdaptadorClienteTDS implements IAdaptadorClienteDAO {
 	}
 
 	/* cuando se registra un cliente se le asigna un identificador único */
-	public void registrarCliente(Usuario cliente) {
+	public void registrarCliente(Cliente cliente) {
 		Entidad eCliente;
 		boolean existe = true; 
 		
@@ -62,14 +62,14 @@ public class AdaptadorClienteTDS implements IAdaptadorClienteDAO {
 		cliente.setCodigo(eCliente.getId()); 
 	}
 
-	public void borrarCliente(Usuario cliente) {
+	public void borrarCliente(Cliente cliente) {
 		// No se comprueban restricciones de integridad con Venta
 		Entidad eCliente = servPersistencia.recuperarEntidad(cliente.getCodigo());
 		
 		servPersistencia.borrarEntidad(eCliente);
 	}
 
-	public void modificarCliente(Usuario cliente) {
+	public void modificarCliente(Cliente cliente) {
 
 		Entidad eCliente = servPersistencia.recuperarEntidad(cliente.getCodigo());
 
@@ -83,11 +83,11 @@ public class AdaptadorClienteTDS implements IAdaptadorClienteDAO {
 		servPersistencia.anadirPropiedadEntidad(eCliente, "ventas", ventas);
 	}
 
-	public Usuario recuperarCliente(int codigo) {
+	public Cliente recuperarCliente(int codigo) {
 
 		// Si la entidad está en el pool la devuelve directamente
 		if (PoolDAO.getUnicaInstancia().contiene(codigo))
-			return (Usuario) PoolDAO.getUnicaInstancia().getObjeto(codigo);
+			return (Cliente) PoolDAO.getUnicaInstancia().getObjeto(codigo);
 
 		// si no, la recupera de la base de datos
 		Entidad eCliente;
@@ -102,7 +102,7 @@ public class AdaptadorClienteTDS implements IAdaptadorClienteDAO {
 		dni = servPersistencia.recuperarPropiedadEntidad(eCliente, "dni");
 		nombre = servPersistencia.recuperarPropiedadEntidad(eCliente, "nombre");
 
-		Usuario cliente = new Usuario(dni, nombre);
+		Cliente cliente = new Cliente(dni, nombre);
 		cliente.setCodigo(codigo);
 
 		// IMPORTANTE:añadir el cliente al pool antes de llamar a otros
@@ -119,10 +119,10 @@ public class AdaptadorClienteTDS implements IAdaptadorClienteDAO {
 		return cliente;
 	}
 
-	public List<Usuario> recuperarTodosClientes() {
+	public List<Cliente> recuperarTodosClientes() {
 
 		List<Entidad> eClientes = servPersistencia.recuperarEntidades("cliente");
-		List<Usuario> clientes = new LinkedList<Usuario>();
+		List<Cliente> clientes = new LinkedList<Cliente>();
 
 		for (Entidad eCliente : eClientes) {
 			clientes.add(recuperarCliente(eCliente.getId()));

@@ -7,7 +7,7 @@ import java.util.List;
 public class Venta {
 
 	private int codigo;
-	private Usuario cliente;
+	private Cliente cliente;
 	private Date fecha;
 	private List<LineaVenta> lineasVenta;
 	private boolean esCompleta;
@@ -39,11 +39,11 @@ public class Venta {
 		this.codigo = codigo;
 	}
 
-	public void setCliente(Usuario cliente) {
+	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
 
-	public Usuario getCliente() {
+	public Cliente getCliente() {
 		return cliente;
 	}
 

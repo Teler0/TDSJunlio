@@ -3,13 +3,13 @@ package modelo;
 import java.util.LinkedList;
 import java.util.List;
 
-public class Usuario {
+public class Cliente {
 	private int codigo;
 	private String dni;
 	private String nombre;
 	private List<Venta> ventas;
 
-	public Usuario(String dni, String nombre) {
+	public Cliente(String dni, String nombre) {
 		codigo = 0;
 		this.dni = dni;
 		this.nombre = nombre;

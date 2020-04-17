@@ -15,7 +15,7 @@ import beans.Entidad;
 import beans.Propiedad;
 
 import modelo.Venta;
-import modelo.Usuario;
+import modelo.Cliente;
 import modelo.LineaVenta;
 
 public class AdaptadorVentaTDS implements IAdaptadorVentaDAO {
@@ -133,7 +133,7 @@ public class AdaptadorVentaTDS implements IAdaptadorVentaDAO {
 		AdaptadorClienteTDS adaptadorCliente = AdaptadorClienteTDS.getUnicaInstancia();
 		int codigoCliente = Integer.parseInt(servPersistencia.recuperarPropiedadEntidad(eVenta, "cliente"));
 		
-		Usuario cliente  = adaptadorCliente.recuperarCliente(codigoCliente);
+		Cliente cliente  = adaptadorCliente.recuperarCliente(codigoCliente);
 		venta.setCliente(cliente);
 		// lineas de venta
 		List<LineaVenta> lineasVenta = obtenerLineasVentaDesdeCodigos(servPersistencia.recuperarPropiedadEntidad(eVenta, "lineasventa"));

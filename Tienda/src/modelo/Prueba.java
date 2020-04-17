@@ -14,7 +14,7 @@ public class Prueba {
 
 	public static void main(String[] args) {
 		Producto p1 = new Producto(10.0, "danone", "yogurt desnatado");
-		Usuario c1 = new Usuario("123", "Paco Martinez");
+		Cliente c1 = new Cliente("123", "Paco Martinez");
 		LineaVenta l1 = new LineaVenta(12, p1);
 		LineaVenta l2 = new LineaVenta(5, p1);
 		LineaVenta otrol1 = new LineaVenta(1, p1);
@@ -65,7 +65,7 @@ public class Prueba {
 		// System.exit(0);
 
 		// listar
-		Usuario auxC;
+		Cliente auxC;
 		System.out.println("recupero cliente " + c1.getCodigo());
 		auxC = adaptadorCliente.recuperarCliente(c1.getCodigo());
 		System.out.println("DNI:" + auxC.getDni());

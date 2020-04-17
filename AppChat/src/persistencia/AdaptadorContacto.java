@@ -112,10 +112,10 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		String fechaDeNacimiento = servPersistencia.recuperarPropiedadEntidad(eUsuario, "nombre");
 		
 		Contacto contacto = new Contacto(nombre);
-		contacto.
+		
 		// IMPORTANTE:añadir el cliente al pool antes de llamar a otros
 		// adaptadores
-		//PoolDAO.getUnicaInstancia().addObjeto(numero, cliente);
+		PoolDAO.getUnicaInstancia().addObjeto(nombre);
 
 		// recuperar propiedades que son objetos llamando a adaptadores
 		// ventas

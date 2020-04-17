@@ -6,7 +6,7 @@ import java.util.List;
 import modelo.CatalogoClientes;
 import modelo.CatalogoProductos;
 import modelo.CatalogoVentas;
-import modelo.Usuario;
+import modelo.Cliente;
 import modelo.Producto;
 import modelo.Venta;
 import persistencia.DAOException;
@@ -43,7 +43,7 @@ public class ControladorTienda {
 
 	public void registrarCliente(String dni, String nombre) {
 		// No se controla que existan dnis duplicados
-		Usuario cliente = new Usuario(dni, nombre);
+		Cliente cliente = new Cliente(dni, nombre);
 		adaptadorCliente.registrarCliente(cliente);
 		catalogoClientes.addCliente(cliente);
 	}
@@ -65,7 +65,7 @@ public class ControladorTienda {
 	}
 
 	public void registrarVenta(String dni, Date fecha) {
-		Usuario cliente = catalogoClientes.getCliente(dni);
+		Cliente cliente = catalogoClientes.getCliente(dni);
 		ventaActual.setCliente(cliente);
 		ventaActual.setFecha(fecha);
 
