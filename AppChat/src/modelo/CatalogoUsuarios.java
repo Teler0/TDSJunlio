@@ -11,6 +11,8 @@ import persistencia.IAdaptadorUsuarioDAO;
 
 public class CatalogoUsuarios {
 
+	//cambio esto 
+	//y esto tambien
 	private Map<String,Usuario> usuarios; 
 	private static CatalogoUsuarios unicaInstancia = new CatalogoUsuarios();
 	

@@ -115,7 +115,7 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		contacto.
 		// IMPORTANTE:añadir el cliente al pool antes de llamar a otros
 		// adaptadores
-		PoolDAO.getUnicaInstancia().addObjeto(numero, cliente);
+		//PoolDAO.getUnicaInstancia().addObjeto(numero, cliente);
 
 		// recuperar propiedades que son objetos llamando a adaptadores
 		// ventas
