@@ -109,7 +109,6 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		imagen = servPersistencia.recuperarPropiedadEntidad(eContacto, "imagen");
 		String email = servPersistencia.recuperarPropiedadEntidad(eContacto, "email");
 		String numeroU = servPersistencia.recuperarPropiedadEntidad(eUsuario, "numero");
-		String saludo = servPersistencia.recuperarPropiedadEntidad(eUsuario, "saludo");
 		String fechaDeNacimiento = servPersistencia.recuperarPropiedadEntidad(eUsuario, "nombre");
 		
 		Contacto contacto = new Contacto(nombre);
