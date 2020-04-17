@@ -4,6 +4,7 @@ import java.time.LocalTime;
 
 public class Mensaje {
 	
+	int codigo; // Para identificarlos mas claramente
 	String texto;
 	Usuario emisor;
 	Contacto receptor; // Puede ser un grupo o contacto individual.
@@ -11,6 +12,7 @@ public class Mensaje {
 	
 	private Mensaje(String texto, Usuario emisor, Contacto receptor){
 		
+		codigo = 0;
 		this.texto = texto;
 		this.emisor = emisor;
 		this.receptor = receptor;
@@ -48,6 +50,14 @@ public class Mensaje {
 
 	public void setTimestamp(LocalTime timestamp) {
 		this.timestamp = timestamp;
+	}
+
+	public int getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(int codigo) {
+		this.codigo = codigo;
 	}
 	
 	

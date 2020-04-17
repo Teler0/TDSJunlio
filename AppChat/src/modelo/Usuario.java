@@ -12,14 +12,14 @@ public class Usuario implements Descuento {//IMplementar getDescuento(){}
 	String password;
 	boolean isPremiun;
 	String imagen;
-	Date fechaDeNacimiento;
+	String fechaDeNacimiento;
 	String saludo;
 	String email;
 	int id;
 	List<Contacto> listaDeContactos;
 	Date fechaRegistro;
 	
-	private Usuario(String alias, String nombre, Date fechaDeNacimiento, String numero, String password, String email, String saludo) {
+	public Usuario(String alias, String nombre, String fechaDeNacimiento, String numero, String password, String email, String saludo) {
 		this.alias = alias;
 		this.nombre = nombre;
 		this.fechaDeNacimiento = fechaDeNacimiento;
@@ -65,12 +65,7 @@ public class Usuario implements Descuento {//IMplementar getDescuento(){}
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	public Date getFechadenacimiento() {
-		return fechaDeNacimiento;
-	}
-	public void setFechadenacimiento(Date fechadenacimiento) {
-		this.fechaDeNacimiento = fechadenacimiento;
-	}
+
 	public String getAlias() {
 		return alias;
 	}
@@ -112,6 +107,43 @@ public class Usuario implements Descuento {//IMplementar getDescuento(){}
 		// TODO Apéndice de método generado automáticamente
 		return 0;
 	}
+
+
+	public String getFechaDeNacimiento() {
+		return fechaDeNacimiento;
+	}
+
+
+	public void setFechaDeNacimiento(String fechaDeNacimiento) {
+		this.fechaDeNacimiento = fechaDeNacimiento;
+	}
+
+
+	public List<Contacto> getListaDeContactos() {
+		return listaDeContactos;
+	}
+
+
+	public void setListaDeContactos(List<Contacto> listaDeContactos) {
+		this.listaDeContactos = listaDeContactos;
+	}
+
+
+	public Date getFechaRegistro() {
+		return fechaRegistro;
+	}
+
+
+	public void setFechaRegistro(Date fechaRegistro) {
+		this.fechaRegistro = fechaRegistro;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
 	
 }	
 	

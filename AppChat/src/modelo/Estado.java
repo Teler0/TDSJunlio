@@ -10,7 +10,6 @@ public class Estado {
 		this.imagen = "default_image.png";
 	}
 
-
 	public String getMensaje() {
 		return mensaje;
 	}
