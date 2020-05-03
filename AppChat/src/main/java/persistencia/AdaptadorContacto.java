@@ -30,7 +30,7 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		servPersistencia = FactoriaServicioPersistencia.getInstance().getServicioPersistencia(); 
 	}
 	
-	/*esto es un cambio*/
+	/*esto es un cambio ------------*/
 	
 	@Override
 	public boolean registrarContacto(Contacto contacto) {

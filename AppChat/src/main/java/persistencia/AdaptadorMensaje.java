@@ -120,7 +120,7 @@ public class AdaptadorMensaje implements IAdaptadorMensajeDAO {
 		}
 		return mensajes;
 	}
-	fbfb
+
 	
 
 	
