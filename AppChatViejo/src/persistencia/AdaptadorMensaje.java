@@ -1,17 +1,19 @@
+package persistencia;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
+import persistencia.IAdaptadorMensajeDAO;
 
+import beans.Propiedad;
 import beans.Entidad;
-import modelo.Producto;
-import persistencia.AdaptadorProductoTDS;
+import modelo.Mensaje;
 
 public class AdaptadorMensaje implements IAdaptadorMensajeDAO {
 	
 	
 	
-	asas
 	private static ServicioPersistencia servPersistencia;
 	private static AdaptadorMensaje unicaInstancia = null;
 	

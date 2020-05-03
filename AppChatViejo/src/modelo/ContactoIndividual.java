@@ -16,7 +16,7 @@ public class ContactoIndividual extends Contacto {
 		return this.telefono;
 	}	
 	
-	public setUsuario(Usuario usuario) {
+	public void setUsuario(Usuario usuario) {
 		
 		this.usuario = usuario;
 		this.setImagen(usuario.getImagen());
@@ -26,4 +26,4 @@ public class ContactoIndividual extends Contacto {
 		
 		return usuario;
 		
-}
+}}

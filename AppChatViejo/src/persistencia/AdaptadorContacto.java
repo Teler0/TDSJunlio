@@ -6,18 +6,16 @@ import java.util.Arrays;
 
 import beans.Entidad;
 import beans.Propiedad;
-import modelo.Usuario;
-import tds.driver.FactoriaServicioPersistencia;
-import tds.driver.ServicioPersistencia;
-import beans.Entidad;
 import modelo.Contacto;
 import modelo.ContactoIndividual;
 import modelo.Grupo;
 import modelo.Mensaje;
+import modelo.Usuario;
+import tds.driver.FactoriaServicioPersistencia;
+import tds.driver.ServicioPersistencia;
 
 public class AdaptadorContacto implements IAdaptadorContactoDAO {
 
-	
 	private static ServicioPersistencia servPersistencia;
 	private static AdaptadorContacto unicaInstancia = null;
 
@@ -110,7 +108,7 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		Contacto grupo = new Grupo(nombre);
 		PoolDAO.getUnicaInstancia().addObjeto(codigo, grupo);
 		
-		AdaptadorUsuarioTDS adaptadorUsuario = AdaptadorUsuarioTDS.getUnicaInstancia(); 
+		AdaptadorUsuario adaptadorUsuario = AdaptadorUsuario.getUnicaInstancia(); 
 		int nummeroUsuario = servPersistencia.recuperarPropiedadEntidad(eContacto, "admin");
 		
 		Usuario admin  = adaptadorUsuario.recuperarUsuario(codigoUsuario);
@@ -197,7 +195,8 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		eContacto.setPropiedades(propiedades);
 		return eContacto;
 	}
-	
+
+
 	
 /*	private <L> List<L> obtenerMensajesDesdeCodigos(String lineas) {
 
