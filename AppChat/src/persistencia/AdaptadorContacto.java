@@ -160,7 +160,7 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		// ventas
 		return contacto;
 
-	}
+	}sdfsfsf
 
 	@Override
 	public List<Contacto> recuperarTodosContactos() {
