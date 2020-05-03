@@ -59,9 +59,7 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 			eContacto = registrarContactoIndividual(eContacto, (ContactoIndividual) contacto);
 		} else {
 			eContacto = registrarGrupo(eContacto, (Grupo) contacto);
-		}
-		
-		
+		}	
 		
 		if (contacto instanceof Grupo) {
 			eContacto = registrarGrupo(eContacto, (Grupo) contacto);
@@ -89,6 +87,41 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		
 	}
 
+	
+	public Contacto recuperarContactoIndividual(Entidad eContacto, String nombre, int codigo) {
+		String telefono;
+		telefono = servPersistencia.recuperarPropiedadEntidad(eContacto, "telefono"); //Recuperamos el  telefono
+		Contacto contactoIndividual = new ContactoIndividual(nombre, telefono); //Creamos el contacto
+		
+		PoolDAO.getUnicaInstancia().addObjeto(codigo, contactoIndividual); //Añadimos el contacto y su codigo
+		
+		AdaptadorUsuario adaptadorUsuario = AdaptadorUsuario.getUnicaInstancia(); //Creamos una intancia de usuario para poder recuperarlo
+		String idUsuario = servPersistencia.recuperarPropiedadEntidad(eContacto, "usuario"); //Recuperamos el numero
+		
+		Usuario usuario  = adaptadorUsuario.recuperarUsuario(idUsuario); //Recuperamos el contacto usando el numero
+		((ContactoIndividual) contactoIndividual).setUsuario(usuario); //Hacemos casting y le metemos al usuario (ponerlo de otra forma)
+		
+		return contactoIndividual; 
+	}
+	
+	
+	public Contacto recuperarGrupo(Entidad eContacto, String nombre, int codigo) {
+
+		Contacto grupo = new Grupo(nombre);
+		PoolDAO.getUnicaInstancia().addObjeto(codigo, grupo);
+		
+		AdaptadorUsuarioTDS adaptadorUsuario = AdaptadorUsuarioTDS.getUnicaInstancia(); 
+		int nummeroUsuario = servPersistencia.recuperarPropiedadEntidad(eContacto, "admin");
+		
+		Usuario admin  = adaptadorUsuario.recuperarUsuario(codigoUsuario);
+		((Grupo) grupo).setAdmin(admin);  // De aqui para arriba copy-paste de contactoIndividual
+		
+
+		
+		return grupo;
+	}
+
+	
 	@Override
 	public Contacto recuperarContacto(int codigo) {
 		
@@ -107,11 +140,17 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		// recuperar propiedades que no son objetos
 		nombre = servPersistencia.recuperarPropiedadEntidad(eContacto, "nombre");
 		imagen = servPersistencia.recuperarPropiedadEntidad(eContacto, "imagen");
-		String email = servPersistencia.recuperarPropiedadEntidad(eContacto, "email");
-		String numeroU = servPersistencia.recuperarPropiedadEntidad(eUsuario, "numero");
-		String fechaDeNacimiento = servPersistencia.recuperarPropiedadEntidad(eUsuario, "nombre");
+		String numero = servPersistencia.recuperarPropiedadEntidad(eUsuario, "numero");
 		
-		Contacto contacto = new Contacto(nombre);
+		Contacto contacto;
+		try {
+			contacto = recuperarContactoIndividual(eContacto, nombre, codigo);
+		} catch (Exception e) {
+			contacto = recuperarGrupo(codigo, eContacto, nombre);
+		}
+		
+		contacto.setImagen(imagen); //Insertamos lo que falta
+		contacto.setCodigo(codigo);
 		
 		// IMPORTANTE:añadir el cliente al pool antes de llamar a otros
 		// adaptadores
@@ -120,8 +159,8 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		// recuperar propiedades que son objetos llamando a adaptadores
 		// ventas
 		return contacto;
-		
-	}
+
+	}sdfsfsf
 
 	@Override
 	public List<Contacto> recuperarTodosContactos() {
@@ -154,6 +193,7 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		
 		List<Propiedad> propiedades = eContacto.getPropiedades();
 		propiedades.add(new Propiedad("numero", contacto.getTelefono()));
+		propiedades.add(newPropiedad("usuario",String.valueOf(contacto.getUsuario().getNumero()));		
 		eContacto.setPropiedades(propiedades);
 		return eContacto;
 	}
