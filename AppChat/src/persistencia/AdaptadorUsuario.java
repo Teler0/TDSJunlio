@@ -56,7 +56,7 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
 						new Propiedad("imagen", cliente.getImagen()), new Propiedad("saludo", cliente.getSaludo()),
 						new Propiedad("email", cliente.getEmail()), new Propiedad("isPremiun", Boolean.toString(cliente.isPremiun())),
 						new Propiedad("id", Integer.toString(cliente.getId())), new Propiedad("fechaDeNacimiento", cliente.getFechaDeNacimiento()),
-						new Propiedad("fechaDeRegistro", stringFecha(cliente.getFechaRegistro()))
+						new Propiedad("fechaDeRegistro", stringFecha(cliente.getFechaRegistro())), new Propiedad("listaDeContactos", obtenerContactos(cliente.getListaDeCntactos()))
 		 )));
 		
 		// registrar entidad cliente
@@ -111,11 +111,6 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
 	}
 
 
-	public Usuario recuperarUsuario(int codigo) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
 	@Override
 	public List<Usuario> recuperarTodosUsuarios() {
 		// TODO Auto-generated method stub
@@ -142,7 +137,7 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
     }
 	
 	@Override
-	public Usuario recuperarUsuario(String codigo) {
+	public Usuario recuperarUsuario(String codigo) { // pone codigo, pero nah es el numero
 
 		int numero = Integer.parseInt(codigo);
 		// Si la entidad está en el pool la devuelve directamente
@@ -179,7 +174,7 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
 	}
 
 	
-	public static <C> String obtenerContactos(List<C> contactos) {
+	public String obtenerContactos(List<C> contactos) {
 		String codigos = "";
 		for (Object contacto : contactos) {
 			codigos += ((Contacto)contacto).getCodigo() + ",";
