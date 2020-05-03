@@ -180,7 +180,7 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 	
 	
 	private Entidad registrarGrupo(Entidad eContacto, Grupo grupo) {
-		
+
 		List<Propiedad> propiedades = eContacto.getPropiedades();
 		propiedades.add(new Propiedad("administrador", String.valueOf(grupo.getAdministrador().getNumero())));
 		propiedades.add(new Propiedad("contactos", AdaptadorUsuario.obtenerContactos(grupo.getContactos())));

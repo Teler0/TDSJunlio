@@ -8,7 +8,7 @@ import modelo.Producto;
 import persistencia.AdaptadorProductoTDS;
 
 public class AdaptadorMensaje implements IAdaptadorMensajeDAO {
-
+asas
 	private static ServicioPersistencia servPersistencia;
 	private static AdaptadorMensaje unicaInstancia = null;
 	
