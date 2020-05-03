@@ -22,6 +22,7 @@ public class Estado {
 	}
 
 	
+	
 
 	public void setImagen(String imagen) {
 		this.imagen = imagen;

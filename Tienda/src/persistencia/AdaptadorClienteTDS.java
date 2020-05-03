@@ -30,7 +30,7 @@ public class AdaptadorClienteTDS implements IAdaptadorClienteDAO {
 		servPersistencia = FactoriaServicioPersistencia.getInstance().getServicioPersistencia(); 
 	}
 
-	/* cuando se registra un cliente se le asigna un identificador único */
+	/* cuando se registdsra un cliente se le asigna un identificador único */
 	public void registrarCliente(Cliente cliente) {
 		Entidad eCliente;
 		boolean existe = true; 
