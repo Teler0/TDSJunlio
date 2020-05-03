@@ -1,10 +1,17 @@
-//import java.util.ArrayList;
+package persistencia;
+
+
+import java.util.ArrayList;
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 
 import beans.Entidad;
-
+import beans.Mensaje;
+import beans.Propiedad;
+import tds.driver.FactoriaServicioPersistencia;
+import tds.driver.ServicioPersistencia;
 
 
 public class AdaptadorMensaje implements IAdaptadorMensajeDAO {
@@ -111,6 +118,7 @@ public class AdaptadorMensaje implements IAdaptadorMensajeDAO {
 		}
 		return productos;
 	}
+
 	
 	
 
