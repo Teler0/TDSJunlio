@@ -13,7 +13,7 @@ import beans.Propiedad;
 import beans.Entidad;
 import modelo.Mensaje;
 
-public class AdaptadorMensaje implements IAdaptadorMensajeDAO {
+public class AdaptadorMensaje implements IAdaptadorMensajeDAO { 
 	
 	
 	
