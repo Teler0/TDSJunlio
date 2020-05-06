@@ -3,6 +3,7 @@ package persistencia;
 import java.util.ArrayList;
 
 
+
 import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
@@ -12,6 +13,7 @@ import tds.driver.ServicioPersistencia;
 import beans.Propiedad;
 import beans.Entidad;
 import modelo.Mensaje;
+import modelo.Usuario;
 
 public class AdaptadorMensaje implements IAdaptadorMensajeDAO { 
 	
@@ -78,12 +80,16 @@ public class AdaptadorMensaje implements IAdaptadorMensajeDAO {
 		emisor = servPersistencia.recuperarPropiedadEntidad(eMensaje, "emisor");
 		receptor = servPersistencia.recuperarPropiedadEntidad(eMensaje, "receptor");
 		
-		/*COMO PASAR UN NUEVO EMISOR Y RECEPTOR, YA QUE SON USUARIO Y CONTACTO RESPETIVAMENTE*/
-		/*PASAR CODIGOS EN EL CONSTRUCTOR�?*/
-		//recuperar usuario
+	
 		//recuperar contacto
 		//y pasarselos al constructor de mensaje.
-		Mensaje mensaje = new Mensaje(texto,usuario , contacto);
+		
+		Usuario emisor1 = AdaptadorUsuario.recuperarUsuario(String.valueOf(emisor)); 
+		
+		/*al recuperar el receptor, como se si es grupo o individual*/
+		
+	
+		Mensaje mensaje = new Mensaje(texto,emisor1 , contacto);
 		mensaje.setCodigo(codigo);
 		return mensaje;
 	}
@@ -107,7 +113,8 @@ public class AdaptadorMensaje implements IAdaptadorMensajeDAO {
 		servPersistencia.eliminarPropiedadEntidad(eMensaje, "receptor");
 		servPersistencia.anadirPropiedadEntidad(eMensaje,"receptor", String.valueOf(mensaje.getReceptor().getCodigo()));
 		
-		/*modificar la fecha �?*/
+		servPersistencia.eliminarPropiedadEntidad(eMensaje, "timestamp");
+		servPersistencia.anadirPropiedadEntidad(eMensaje, "timestamp", mensaje.getTimestamp());
 	}
 	
 	

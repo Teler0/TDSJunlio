@@ -32,7 +32,7 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 	
 	/*esto es un cambio ------------*/
 	
-	@Override
+	
 	public boolean registrarContacto(Contacto contacto) {
 		
 		Entidad eContacto;
@@ -70,13 +70,13 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		return true;
 	}
 
-	@Override
+	
 	public void borrarContacto(Contacto contacto) {
 		Entidad eContacto = servPersistencia.recuperarEntidad(contacto.getCodigo());
 		servPersistencia.borrarEntidad(eContacto);
 	}
 
-	@Override
+
 	public void modificarContacto(Contacto contacto) {
 		// TODO Auto-generated method stub
 
@@ -111,7 +111,7 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 		PoolDAO.getUnicaInstancia().addObjeto(codigo, grupo);
 		
 		AdaptadorUsuario adaptadorUsuario = AdaptadorUsuario.getUnicaInstancia(); 
-		int nummeroUsuario = servPersistencia.recuperarPropiedadEntidad(eContacto, "admin");
+		int numeroUsuario = servPersistencia.recuperarPropiedadEntidad(eContacto, "admin");
 		
 		Usuario admin  = adaptadorUsuario.recuperarUsuario(codigoUsuario);
 		((Grupo) grupo).setAdmin(admin);  // De aqui para arriba copy-paste de contactoIndividual
@@ -122,7 +122,7 @@ public class AdaptadorContacto implements IAdaptadorContactoDAO {
 	}
 
 	
-	@Override
+
 	public Contacto recuperarContacto(int codigo) {
 		
 		// Si la entidad est� en el pool la devuelve directamente

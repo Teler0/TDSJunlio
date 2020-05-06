@@ -33,7 +33,7 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
 	}
 	
 	
-	@Override
+	
 	public boolean registrarUsuario(Usuario cliente) {
 		Entidad eUsuario;
 		boolean existe = true;
@@ -56,7 +56,7 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
 						new Propiedad("imagen", cliente.getImagen()), new Propiedad("saludo", cliente.getSaludo()),
 						new Propiedad("email", cliente.getEmail()), new Propiedad("isPremiun", Boolean.toString(cliente.isPremiun())),
 						new Propiedad("id", Integer.toString(cliente.getId())), new Propiedad("fechaDeNacimiento", cliente.getFechaDeNacimiento()),
-						new Propiedad("fechaDeRegistro", stringFecha(cliente.getFechaRegistro())), new Propiedad("listaDeContactos", obtenerContactos(cliente.getListaDeCntactos()))
+						new Propiedad("fechaDeRegistro", stringFecha(cliente.getFechaRegistro())), new Propiedad("listaDeContactos", obtenerContactos(cliente.getListaDeContactos()))
 		 )));
 		
 		// registrar entidad cliente
@@ -71,14 +71,14 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
 		return true; //Se ha creado
 	}
 
-	@Override
+	
 	public void borrarUsuario(Usuario cliente) {
 		// TODO Auto-generated method stub
 		Entidad eUsuario = servPersistencia.recuperarEntidad(Integer.parseInt(cliente.getNumero()));
 		servPersistencia.borrarEntidad(eUsuario);
 	}
 
-	@Override
+	
 	public void modificarUsuario(Usuario cliente) {
 		// TODO Auto-generated method stub
 		
@@ -111,7 +111,7 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
 	}
 
 
-	@Override
+	
 	public List<Usuario> recuperarTodosUsuarios() {
 		// TODO Auto-generated method stub
 		
@@ -119,7 +119,7 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
 		List<Usuario> usuarios = new LinkedList<Usuario>();
 
 		for (Entidad eUsuario : eUsuarios) {
-			usuarios.add(recuperarUsuario(eUsuario.getId()));
+			usuarios.add(recuperarUsuario(String.valueOf(eUsuario.getId())));
 		}
 		
 		return usuarios;
@@ -135,8 +135,8 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
         return fechaString;
     }
 	
-	@Override
-	public Usuario recuperarUsuario(String codigo) { // pone codigo, pero nah es el numero
+	
+	public static Usuario recuperarUsuario(String codigo) { // pone codigo, pero nah es el numero
 
 		int numero = Integer.parseInt(codigo);
 		// Si la entidad est� en el pool la devuelve directamente
@@ -162,7 +162,7 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
 		
 		Usuario cliente = new Usuario(alias, nombre, fechaDeNacimiento, numeroU, password, email, saludo);
 
-		// IMPORTANTE:a�adir el cliente al pool antes de llamar a otros
+		// IMPORTANTE:anadir el cliente al pool antes de llamar a otros
 		// adaptadores
 		PoolDAO.getUnicaInstancia().addObjeto(numero, cliente);
 
@@ -173,7 +173,7 @@ public class AdaptadorUsuario implements IAdaptadorUsuarioDAO {
 	}
 
 	
-	public String obtenerContactos(List<C> contactos) {
+	public static String obtenerContactos(List<C> contactos) {
 		String codigos = "";
 		for (Object contacto : contactos) {
 			codigos += ((Contacto)contacto).getCodigo() + ",";
